@@ -8,7 +8,6 @@ use MicrosoftAzure\Storage\Blob\Models\ListBlobsOptions;
 use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 
- # Mengatur instance dari Azure::Storage::Client
 $connectionString = "DefaultEndpointsProtocol=https;AccountName=sub2dicoding;AccountKey=zdoVz7lOjiAxMIOxK1Y2rgWVrUTlMVbMCFW2LfV6RSq4kHtfqJwzMBkZCLyJpzYbIQGz7h2UkXz36x+g5kBjDw==;EndpointSuffix=core.windows.net";
     
 $containerName = "blockdicoding";
@@ -16,11 +15,10 @@ $containerName = "blockdicoding";
 $blobClient = BlobRestProxy::createBlobService($connectionString);
     
 if (isset($_POST['submit'])) {
-	$fileToUpload = strtolower($_FILES["myfile"]["name"]);
-	$content = fopen($_FILES["fileToUpload"]["tmp_name"], "r");
-	// echo fread($content, filesize($fileToUpload));
+	$myfile = strtolower($_FILES["myfile"]["name"]);
+	$content = fopen($_FILES["myfile"]["tmp_name"], "r");	
 
-	$blobClient->createBlockBlob($containerName, $fileToUpload, $content);
+	$blobClient->createBlockBlob($containerName, $myfile, $content);
 	header("Location: index.php");
 }
 
@@ -40,8 +38,8 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 	<h1>Analyze image:</h1>
 	Enter the URL to an image, then click the <strong>Analyze image</strong> button.
 	<br><br>
-	<form action="index.php" method="post">
-		<input type="file" name="myfile" accept=".jpeg,.jpg,.png">	
+	<form action="index.php" method="post" enctype="multipart/form-data">
+		<input type="file" name="myfile" accept=".jpeg,.jpg,.png" required="">	
 		<input type="submit"  name="submit" value="Upload">
 	</form>	
 	<br>

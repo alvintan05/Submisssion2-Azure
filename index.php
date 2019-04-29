@@ -35,8 +35,8 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 	<title>Submission 2 Analyze Image</title>
 </head>
 <body>
-	<h1>Analyze image:</h1>
-	Enter the URL to an image, then click the <strong>Analyze image</strong> button.
+	<h1>Upload Gambar</h1>
+	Tekan tombol <strong>Choose File</strong> kemudian tekan tombol <strong>Upload</strong> untuk mengupload gambar.
 	<br><br>
 	<form action="index.php" method="post" enctype="multipart/form-data">
 		<input type="file" name="myfile" accept=".jpeg,.jpg,.png" required="">	
@@ -61,7 +61,7 @@ $result = $blobClient->listBlobs($containerName, $listBlobsOptions);
 					<td><?php echo $oneblob->getName() ?></td> 
 					<td><?php echo $oneblob->getUrl() ?></td> 
 					<td>
-						<form action="cognitive_service.php" method="post">
+						<form action="cognitive_services.php" method="post">
 							<input type="hidden" name="url" value="<?php echo $oneblob->getUrl()?>">
 							<input type="submit" name="submit" value="Analyze">
 						</form>

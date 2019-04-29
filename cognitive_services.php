@@ -71,7 +71,7 @@ if (isset($_POST['submit'])) {
     });
 </script>
 
-<h1>Analyze image:</h1>
+<h1>Hasil Analisa Gambar:</h1>
 <div id="wrapper" style="width:1020px; display:table;">
 	<div id="jsonOutput" style="width:600px; display:table-cell;">
 		Response:
@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
 		<textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;" readonly=""></textarea>
 	</div>
 	<div id="imageDiv" style="width:420px; display:table-cell;">
-		Source image:
+		Sumber Gambar:
 		<br><br>
 		<img id="sourceImage" width="400" />
 		<br>
